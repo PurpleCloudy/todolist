@@ -7,3 +7,6 @@ todolist/dev.py
 *.sqlite3
 
 ../env
+
+__pycache__
+migrations
