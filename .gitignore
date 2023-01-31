@@ -6,7 +6,7 @@ todolist/dev.py
 #Database
 *.sqlite3
 
-../env
+env
 
 __pycache__
 migrations
