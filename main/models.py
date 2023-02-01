@@ -3,28 +3,38 @@ from django.db import models
 # Create your models here.
 class ChoosingTask(models.Model):
     MONTH_CHOICE = (
-        ('JA', 'January'),
-        ('FE', 'February'),
-        ('MR', 'March'),
-        ('AP', 'April'),
-        ('MY', 'May'),
-        ('JN', 'June'),
-        ('JL', 'July'),
-        ('AU', 'August'),
-        ('SP', 'September'),
-        ('OC', 'October'),
-        ('NV', 'November'),
-        ('DC', 'December'),
+        ('JA', 'Январь'),
+        ('FE', 'Февраль'),
+        ('MR', 'Март'),
+        ('AP', 'Апрель'),
+        ('MY', 'Май'),
+        ('JN', 'Июнь'),
+        ('JL', 'Июль'),
+        ('AU', 'Август'),
+        ('SP', 'Сентябрь'),
+        ('OC', 'Октябрь'),
+        ('NV', 'Ноябрь'),
+        ('DC', 'Декабрь'),
     )
 
     DIFF = (
-        ('ST','simple task'),
-        ('CT','complex task'),
+        ('ST','легкая задача'),
+        ('CT','комплесный план'),
     )
 
-    month = models.CharField(max_length=9, choices=MONTH_CHOICE, default="JANUARY")
-    
-    day = models.PositiveSmallIntegerField()
+    month = models.CharField(max_length=9, 
+                             choices=MONTH_CHOICE,
+                             default="JA",
+                             verbose_name="месяц")
+    day = models.PositiveSmallIntegerField(verbose_name="день(число)")
+    difficulty = models.CharField(max_length=2,
+                                  choices=DIFF,
+                                  default='ST',
+                                  verbose_name="сложность")    
 
-    difficulty = models.CharField(max_length=2, choices=DIFF, default='ST')    
+    class Meta:
+        verbose_name = "Сложность, дата"
+        verbose_name_plural = "Сложность и даты"
 
+    def __str__(self):
+        return f"{self.difficulty}, {self.day} {self.month}"
