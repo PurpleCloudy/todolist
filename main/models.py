@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class ChoosingTask(models.Model):
+class Task(models.Model):
     MONTH_CHOICE = (
         ('JA', 'Январь'),
         ('FE', 'Февраль'),
