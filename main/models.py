@@ -22,7 +22,7 @@ class Task(models.Model):
         ('CT','комплесный план'),
     )
 
-    month = models.CharField(max_length=9, 
+    month = models.CharField(max_length=2, 
                              choices=MONTH_CHOICE,
                              default="JA",
                              verbose_name="месяц")
@@ -30,7 +30,10 @@ class Task(models.Model):
     difficulty = models.CharField(max_length=2,
                                   choices=DIFF,
                                   default='ST',
-                                  verbose_name="сложность")    
+                                  verbose_name="сложность")
+    title = models.CharField(max_length=50)
+    body = models.TextField(blank=True)
+    img = models.ImageField(blank=True)
 
     class Meta:
         verbose_name = "Сложность, дата"
