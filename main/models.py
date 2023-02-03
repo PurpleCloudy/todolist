@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 class Task(models.Model):
@@ -31,7 +32,7 @@ class Task(models.Model):
                                   choices=DIFF,
                                   default='ST',
                                   verbose_name="сложность")
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     body = models.TextField(blank=True)
     img = models.ImageField(blank=True)
 
@@ -41,3 +42,20 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.difficulty}, {self.day} {self.month}"
+    
+class DiffcultyModelForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ['difficulty']
+
+class SimpleTaskModelForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ['month', 'day', 'title', 'img']
+        
+
+class ComplexTaskModelForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ['month', 'day', 'title', 'body', 'img']
+    
