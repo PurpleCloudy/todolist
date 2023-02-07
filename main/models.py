@@ -32,30 +32,15 @@ class Task(models.Model):
                                   choices=DIFF,
                                   default='ST',
                                   verbose_name="сложность")
-    title = models.CharField(max_length=100)
-    body = models.TextField(blank=True)
-    img = models.ImageField(blank=True)
+    title = models.CharField(max_length=100, verbose_name="название или простое описание")
+    body = models.TextField(blank=True, verbose_name="более подробное и длинное описание")
+    file = models.FileField(blank=True, verbose_name="изображение (если необходимо)")
 
     class Meta:
         verbose_name = "Сложность, дата"
         verbose_name_plural = "Сложность и даты"
 
     def __str__(self):
-        return f"{self.difficulty}, {self.day} {self.month}"
+        return f"{self.title}, {self.difficulty}"
     
-class DiffcultyModelForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = ['difficulty']
-
-class SimpleTaskModelForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = ['month', 'day', 'title', 'img']
-        
-
-class ComplexTaskModelForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = ['month', 'day', 'title', 'body', 'img']
     
