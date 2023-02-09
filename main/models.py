@@ -4,18 +4,18 @@ from django.forms import ModelForm
 # Create your models here.
 class Task(models.Model):
     MONTH_CHOICE = (
-        ('JA', 'Январь'),
-        ('FE', 'Февраль'),
-        ('MR', 'Март'),
-        ('AP', 'Апрель'),
-        ('MY', 'Май'),
-        ('JN', 'Июнь'),
-        ('JL', 'Июль'),
-        ('AU', 'Август'),
-        ('SP', 'Сентябрь'),
-        ('OC', 'Октябрь'),
-        ('NV', 'Ноябрь'),
-        ('DC', 'Декабрь'),
+        ('1', 'Январь'),
+        ('2', 'Февраль'),
+        ('3', 'Март'),
+        ('4', 'Апрель'),
+        ('5', 'Май'),
+        ('6', 'Июнь'),
+        ('7', 'Июль'),
+        ('8', 'Август'),
+        ('9', 'Сентябрь'),
+        ('10', 'Октябрь'),
+        ('11', 'Ноябрь'),
+        ('12', 'Декабрь'),
     )
 
     DIFF = (
@@ -25,7 +25,7 @@ class Task(models.Model):
 
     month = models.CharField(max_length=2, 
                              choices=MONTH_CHOICE,
-                             default="JA",
+                             default="1",
                              verbose_name="месяц")
     day = models.PositiveSmallIntegerField(verbose_name="день(число)")
     difficulty = models.CharField(max_length=2,
@@ -34,7 +34,7 @@ class Task(models.Model):
                                   verbose_name="сложность")
     title = models.CharField(max_length=100, verbose_name="название или простое описание")
     body = models.TextField(blank=True, verbose_name="более подробное и длинное описание")
-    file = models.FileField(blank=True, verbose_name="изображение или другой файл")
+    file = models.FileField(upload_to='',blank=True, verbose_name="изображение или другой файл")
 
     class Meta:
         verbose_name = "Сложность, дата"
