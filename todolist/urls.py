@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import choosing_diff
+from main.views import choosing_diff, homepage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('choosing/', choosing_diff)
+    path('choosing/', choosing_diff), 
+    path('', homepage)
 ]

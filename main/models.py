@@ -34,7 +34,7 @@ class Task(models.Model):
                                   verbose_name="сложность")
     title = models.CharField(max_length=100, verbose_name="название или простое описание")
     body = models.TextField(blank=True, verbose_name="более подробное и длинное описание")
-    file = models.FileField(blank=True, verbose_name="изображение (если необходимо)")
+    file = models.FileField(blank=True, verbose_name="изображение или другой файл")
 
     class Meta:
         verbose_name = "Сложность, дата"
