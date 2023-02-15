@@ -2,15 +2,14 @@
 
 {% block content %}
 
-    {% if {{date}} %}
-        <h3>{{date.day}}-{{month}}</h3>
-        <h1>{{obj.title}}</h1>
-        {% if obj.body %}
-            <p>{{obj.body}}</p>
-        {% endif %}
-        
-    {% else %}
-
+    {% if date %}
+        {% for obj in qs %}
+            <h3>{{obj.day}}-{{obj.month}}</h3>
+            <h1>{{obj.title}}</h1>
+            {% if obj.body %}
+                <p>{{obj.body}}</p>
+            {% endif %}
+        {% endfor %}
     {% endif %}
 
 {% endblock %}
