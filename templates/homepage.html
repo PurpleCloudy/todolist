@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {% for obj in qs %}
+        <h1>_________________________________________</h1>
+        <h3>{{obj.day}}-{{obj.month}}</h3>
+        <h1>{{obj.title}}</h1>
+        {% if obj.body %}
+            <p>{{obj.body}}</p>
+        {% endif %}
+    {% endfor %}
 
-    {% if date %}
-        {% for obj in qs %}
-            <h3>{{obj.day}}-{{obj.month}}</h3>
-            <h1>{{obj.title}}</h1>
-            {% if obj.body %}
-                <p>{{obj.body}}</p>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+<h1>Add a new task</h1>
+<a href="tasks/creating">Add</a>
 
 {% endblock %}

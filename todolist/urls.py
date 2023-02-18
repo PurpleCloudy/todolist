@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from main.views import choosing_diff, homepage
+from main.views import creating_task, list_of_tasks
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('choosing/', choosing_diff), 
-    path('', homepage)
+    path('tasks/creating/', creating_task), 
+    path('', list_of_tasks, name='tasklist')
 ]
