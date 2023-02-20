@@ -3,7 +3,7 @@ from .forms import ComplexTaskModelForm
 from .models import Task
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-import datetime
+from datetime import datetime
 
 # Create your views here.
 def creating_task(request, *args, **kwargs):
@@ -18,7 +18,8 @@ def creating_task(request, *args, **kwargs):
     return render(request, 'forms.html', {'form':form})
 
 def list_of_tasks(request, *args, **kwargs):
-    qs = Task.objects.all()
+    current_date = datetime.now()
+    qs = Task.objects.filter(month=current_date.month, day=current_date.day)
     return render(request, 'homepage.html', {'qs':qs})
 
 
