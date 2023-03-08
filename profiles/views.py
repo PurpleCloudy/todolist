@@ -12,16 +12,16 @@ from django.contrib.auth.decorators import login_required
 
 class RegistrationView(CreateView):
     form_class = RegisterForm
-    template_name = 'registration/register.html'
-    success_url = reverse_lazy('main')
+    template_name = 'profiles/register.html'
+    success_url = reverse_lazy('register')
 
 class MyLoginView(LoginView):
-    template_name = 'registration/login.html'
-    success_url = reverse_lazy('main')
+    template_name = 'profiles/login.html'
+    success_url = reverse_lazy('login')
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(DetailView):
-    template_name = 'registration/profile.html'
+    template_name = 'profiles/profile.html'
 
     def get_object(self):
         return get_object_or_404(User, username=self.request.user.username)

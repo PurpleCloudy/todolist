@@ -4,10 +4,12 @@ from django.contrib.auth.forms import UserCreationForm
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
+    password = forms.HiddenInput()
 
     class Meta:
         model = User
         fields = [
             'username',
             'email',
+            'password',
         ]
