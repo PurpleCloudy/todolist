@@ -19,10 +19,10 @@ class SimpleTaskModelForm(forms.ModelForm):
         model = Task
         fields = [
             'title',
-            'file',
+            'img',
         ]
         widgets = {
-            'file':forms.ClearableFileInput()
+            'img':forms.ClearableFileInput()
         }
 
 class ComplexTaskModelForm(forms.ModelForm):
@@ -31,7 +31,7 @@ class ComplexTaskModelForm(forms.ModelForm):
         fields = [
             'title',
             'body',
-            'file',
+            'img',
         ]
         widgets = {
             'body':forms.TextInput()
