@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ChoosingTaskModelForm, SimpleTaskModelForm, ComplexTaskModelForm
 from .models import Task
 from django.http import HttpResponseRedirect, HttpResponse
@@ -7,18 +7,23 @@ from datetime import datetime
 
 # Create your views here.
 def choosing_diff(request):
-    if request == 'POST':
+    if request.method == 'POST':
         form = ChoosingTaskModelForm(request.POST or None)
         if form.is_valid():
+            obj = Task
             diff = form.cleaned_data.get('difficulty')
             date = form.cleaned_data.get('date')
-            return HttpResponseRedirect(reverse('simple_task'), {'date':date,'diff':diff})
+            obj.difficulty = diff
+            obj.date = date
+            obj.save()
+            return redirect('simple_task')
     else:
         form = ChoosingTaskModelForm()
     return render(request, 'main/difficulty.html', {'form':form}) 
 
 def simpletask_view(request, *args, **kwargs):
-    print(kwargs)
+    print(args)
+    return render(request, 'main/simple_task.html')
 
 def list_of_tasks(request, *args, **kwargs):
     current_date = datetime.now()

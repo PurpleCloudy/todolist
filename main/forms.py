@@ -11,7 +11,6 @@ class ChoosingTaskModelForm(forms.ModelForm):
                   ]
         widgets = {
             'date': forms.SelectDateWidget(),
-            'difficulty': forms.CheckboxInput()
         }
 
 class SimpleTaskModelForm(forms.ModelForm):
