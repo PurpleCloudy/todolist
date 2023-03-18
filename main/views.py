@@ -12,13 +12,13 @@ def choosing_diff(request):
         if form.is_valid():
             diff = form.cleaned_data.get('difficulty')
             date = form.cleaned_data.get('date')
-            return HttpResponseRedirect(reverse('simple_task'))
+            return HttpResponseRedirect(reverse('simple_task'), {'date':date,'diff':diff})
     else:
         form = ChoosingTaskModelForm()
-    return render(request, '') 
+    return render(request, 'main/difficulty.html', {'form':form}) 
 
 def simpletask_view(request, *args, **kwargs):
-    pass
+    print(kwargs)
 
 def list_of_tasks(request, *args, **kwargs):
     current_date = datetime.now()
